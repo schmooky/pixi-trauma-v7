@@ -1,0 +1,26 @@
+{
+  "name": "pixi-trauma-v7",
+  "version": "1.0.0",
+  "description": "Trauma Shake Container for PixiJS v7",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 0.0.0.0"
+  },
+  "dependencies": {
+    "@types/dat.gui": "^0.7.13",
+    "@types/node": "^22.7.0",
+    "dat.gui": "^0.7.9",
+    "pixi-spine": "^4.0.3",
+    "pixi.js": "^7.4.2",
+    "simplex-noise": "^4.0.3",
+    "vite": "^5.4.5",
+    "vite-plugin-markdown": "^2.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.24.0"
+  }
+}
