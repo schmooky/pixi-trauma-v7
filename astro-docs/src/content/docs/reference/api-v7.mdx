@@ -1,0 +1,165 @@
+---
+title: "PIXI.js v7.x API reference"
+description: A reference page in my new Starlight docs site.
+---
+
+# TraumaShakeContainer
+
+The `TraumaShakeContainer` class is an extension of the `Container` from the `pixi.js` library, designed to provide shake effects based on trauma input. This effect can be useful in gaming and animation contexts to simulate camera shakes or object vibrations.
+
+## Class Hierarchy
+
+```typescript
+import { Container } from 'pixi.js';
+
+class TraumaShakeContainer extends Container {
+  // ...
+}
+```
+
+## Interfaces
+
+### `ShakeSettings`
+
+The `ShakeSettings` interface defines the configuration options for the shake effect.
+
+```typescript
+export interface ShakeSettings {
+  amplitude: number;       // Maximum displacement caused by the shake.
+  traumaPower: number;     // Power applied to the trauma value.
+  decayPerSecond: number;  // Rate at which trauma decays per second.
+  frequency: number;       // Frequency of the shake.
+  octaves: number;         // Number of octaves for fractal noise.
+}
+```
+
+## Constants
+
+### `DEFAULT_SHAKE_SETTINGS`
+
+This constant defines default settings for the shake behavior.
+
+```typescript
+export const DEFAULT_SHAKE_SETTINGS: ShakeSettings = {
+  amplitude: 100,
+  traumaPower: 2,
+  decayPerSecond: 0,
+  frequency: 15,
+  octaves: 1,
+};
+```
+
+## Constructor
+
+### `constructor(settings: Partial<ShakeSettings> = {})`
+
+Creates an instance of `TraumaShakeContainer`.
+
+#### Parameters
+
+- `settings` (`Partial<ShakeSettings>`): An optional configuration to override the defaults. This can contain any subset of properties defined in the `ShakeSettings` interface.
+
+#### Example
+
+```typescript
+const shakeContainer = new TraumaShakeContainer({
+  amplitude: 200,
+  frequency: 20,
+});
+```
+
+## Methods
+
+### `addTrauma(amount: number): void`
+
+Increases the trauma level of the container. The trauma value is clamped between 0 and 1.
+
+#### Parameters
+
+- `amount` (number): The amount of trauma to add.
+
+#### Example
+
+```typescript
+shakeContainer.addTrauma(0.5);
+```
+
+### `update(deltaTime: number): void`
+
+Updates the shake effect based on the elapsed time and current trauma level.
+
+#### Parameters
+
+- `deltaTime` (number): The time elapsed since the last update, typically the frame time.
+
+#### Example
+
+```typescript
+shakeContainer.update(1 / 60); // assuming a frame rate of 60 FPS
+```
+
+### `getTrauma(): number`
+
+Retrieves the current trauma level of the container.
+
+#### Returns
+
+- `number`: The current trauma level, ranging from 0 to 1.
+
+#### Example
+
+```typescript
+const currentTrauma = shakeContainer.getTrauma();
+```
+
+### `updateSettings(newSettings: Partial<ShakeSettings>): void`
+
+Updates the shake settings with new configurations.
+
+#### Parameters
+
+- `newSettings` (`Partial<ShakeSettings>`): A new settings object that will partially override the existing settings.
+
+#### Example
+
+```typescript
+shakeContainer.updateSettings({ decayPerSecond: 5 });
+```
+
+## Private Methods
+
+### `private fbmNoise(x: number, y: number, octaves: number): number`
+
+Calculates a fractional Brownian motion (FBM) noise value based on the given parameters.
+
+#### Parameters
+
+- `x` (number): The x-coordinate for noise generation.
+- `y` (number): The y-coordinate for noise generation.
+- `octaves` (number): The number of octaves to use for the noise calculation.
+
+#### Returns
+
+- `number`: The calculated noise value.
+
+## Usage Example
+
+Here's a complete example demonstrating how to use the `TraumaShakeContainer` in a typical scenario:
+
+```typescript
+import { TraumaShakeContainer } from './path/to/TraumaShakeContainer';
+
+// Create a new shake container
+const shakeContainer = new TraumaShakeContainer();
+
+// In your game loop, add trauma based on events
+shakeContainer.addTrauma(0.8);
+
+// Update the shake container each frame
+function gameLoop(deltaTime: number) {
+  shakeContainer.update(deltaTime);
+  // Render your scene...
+}
+
+// Call gameLoop in your animation loop
+```
