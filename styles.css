@@ -26,4 +26,54 @@ html {
 body {
   padding: 0;
   margin: 0;
+  overflow:hidden;
+}
+
+/* Add this to your CSS */
+.floating-message {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  
+  /* Glassmorphic effect */
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* Text styling */
+  color: white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  
+  /* Optional animation */
+  animation: float 2s ease-in-out infinite;
+  
+  /* Optional shadow */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
+  /* Make sure it's above the canvas */
+  z-index: 1000;
+}
+
+@keyframes float {
+  0%, 100% {
+      transform: translateX(-50%) translateY(0);
+  }
+  50% {
+      transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+/* Optional: hide on mobile or small screens */
+@media (max-width: 768px) {
+  .floating-message {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+  }
 }

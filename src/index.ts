@@ -51,7 +51,7 @@ interface GuiControls extends ShakeSettings {
 const controls: GuiControls = {
   amplitude: 100,
   traumaPower: 2,
-  decayPerSecond: 0.8,
+  decayPerSecond: 0,
   frequency: 15,
   octaves: 1,
   traumaAmount: 0.5,
@@ -75,7 +75,7 @@ shakeFolder.add(controls, "traumaPower", 1, 5).onChange((value: number) => {
   shakeContainer.updateSettings({ traumaPower: value });
 });
 shakeFolder
-  .add(controls, "decayPerSecond", 0.1, 2)
+  .add(controls, "decayPerSecond", 0, 2)
   .onChange((value: number) => {
     shakeContainer.updateSettings({ decayPerSecond: value });
   });

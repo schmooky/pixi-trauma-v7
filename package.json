@@ -1,13 +1,20 @@
 {
-  "name": "pixi-trauma-v7",
+  "name": "trauma",
   "version": "1.0.0",
-  "description": "Trauma Shake Container for PixiJS v7",
-  "main": "dist/index.js",
+  "private": true,
+  "workspaces": [
+    "trauma-shake-pixi-v7",
+    "directional-trauma-shake-pixi-v7",
+    "astro-docs",
+    "examples"
+  ],
   "scripts": {
     "build": "vite build",
-    "dev": "vite --host 0.0.0.0"
+    "dev": "vite --host 0.0.0.0",
+    "build:docs": "npm run build --prefix astro-docs"
   },
   "dependencies": {
+    "@pixi-spine/all-4.1": "^4.0.4",
     "@types/dat.gui": "^0.7.13",
     "@types/node": "^22.7.0",
     "dat.gui": "^0.7.9",

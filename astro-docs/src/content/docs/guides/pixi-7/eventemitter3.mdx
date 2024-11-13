@@ -1,0 +1,118 @@
+---
+title:  Integration with eventemitter3
+description: TraumaShakeContainer Integration with PixiJS v7 and eventemitter3
+---
+
+## Integrating EventEmitter3 with TraumaShakeContainer
+
+In this guide, we will explore how to integrate `EventEmitter3` into a PixiJS application that utilizes `TraumaShakeContainer` for shake effects. We’ll walk through the essential concepts, setup, and implementation steps, allowing you to create a vibrant interactive experience in your applications.
+
+import { Steps } from '@astrojs/starlight/components';
+
+<Steps>
+
+1. Getting Started
+
+     Before diving in, ensure you have the necessary tools:
+
+     - **PixiJS**: A powerful 2D rendering library.
+     - **EventEmitter3**: A lightweight event emitter for handling events.
+     - **TraumaShakeContainer (or any similar shake implementation)**: A container that can shake as a response to events.
+
+2. Setting Up Your Environment
+
+     If you haven’t already, make sure to set up your project with PixiJS and EventEmitter3. You can easily do this via npm:
+     
+     ```bash
+     npm install pixi.js eventemitter3
+     ```
+     
+     Organize your project files. Here’s a simple structure:
+     
+     ```
+     /my-pixi-app
+         ├── index.html
+         ├── app.js
+         └── TraumaShakeContainer.js
+     ```
+
+3. HTML Structure
+
+     Let’s create a basic HTML file to host our application (`index.html`):
+     
+     ```html
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>PixiJS Shake Event Example</title>
+         <script src="path/to/pixi.min.js"></script>
+         <script src="path/to/eventemitter3.min.js"></script>
+         <script src="app.js" defer></script>
+     </head>
+     <body>
+         <canvas id="pixiCanvas" width="800" height="600"></canvas>
+     </body>
+     </html>
+     ```
+
+4. Implementing the Application Logic
+     
+     Here’s a detailed breakdown of the JavaScript code to initialize the PixiJS application, integrate `TraumaShakeContainer`, and use `EventEmitter3`:
+     
+     ```javascript
+     import { Application, Sprite, Container } from 'pixi.js';
+     import EventEmitter from 'eventemitter3';
+     import { TraumaShakeContainer } from './TraumaShakeContainer';
+     
+     // Create a new PixiJS application
+     const app = new Application({ view: document.getElementById('pixiCanvas') });
+     
+     // Create an EventEmitter instance
+     const emitter = new EventEmitter();
+     
+     // Create a shake container
+     const shakeContainer = new TraumaShakeContainer();
+     app.stage.addChild(shakeContainer);
+     
+     // Add a sprite to the shake container
+     const sprite = new Sprite.from('path/to/your/image.png');
+     shakeContainer.addChild(sprite);
+     
+     // Define the shake event listener
+     emitter.on('shake', () => {
+         shakeContainer.shake(); // Trigger the shake effect
+     });
+     
+     // Trigger shake on a mouse click event
+     app.view.addEventListener('click', () => {
+         emitter.emit('shake');
+     });
+     
+     // Update the application
+     app.ticker.add(() => {
+         // Update logic can go here
+         shakeContainer.update();
+     });
+     ```
+   
+5. Understanding How It Works
+     - **Initialization**: We set up a PixiJS application and created an instance of `EventEmitter3`.
+     - **Shake Container**: The `TraumaShakeContainer` is added to the stage, and we load a sprite into it.
+     - **Event Handling**: When the canvas is clicked, we emit a ‘shake’ event, which is listened to by the shake container to invoke its shake effect.
+
+6. Testing Your Application
+     
+     Open your `index.html` file in a web browser. Click on the canvas, and you should see the sprite shake in response to your click events.
+     
+7. Troubleshooting Common Issues
+     
+     - **Sprites not Shaking**: Ensure the `TraumaShakeContainer` is properly set up and included in your project.
+     - **Event Listener Issues**: Double-check that you are emitting and listening to the correct event names.
+
+</ Steps>
+
+### Conclusion
+
+This guide demonstrated how to integrate `EventEmitter3` with a shake effect in PixiJS using `TraumaShakeContainer`. You now have a foundation for making your applications more interactive by leveraging event-driven programming. Expand on this by adding more events or interactions to create richer experiences!
