@@ -6,9 +6,9 @@
       "strict": true,
       "esModuleInterop": true,
       "outDir": "./dist",
-      "rootDir": "./src",
+      "rootDir": "example-v7-gsap/src",
       "skipLibCheck": true
     },
-    "include": ["src/**/*", "global.d.ts"],
+    "include": ["example-v7-gsap/src/**/*", "global.d.ts"],
     "exclude": ["node_modules"]
   }

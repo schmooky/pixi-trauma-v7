@@ -1,11 +1,7 @@
 {
-  "name": "pixi-trauma",
+  "name": "example-v7-gsap",
   "version": "1.0.0",
-  "workspaces": [
-    "trauma-v7",
-    "astro-docs",
-    "example-v7-gsap"
-  ],
+  "private": true,
   "scripts": {
     "build": "vite build",
     "dev": "vite --host 0.0.0.0",
@@ -19,10 +15,10 @@
     "gsap": "^3.12.5",
     "pixi-spine": "^4.0.3",
     "pixi.js": "^7.4.2",
-    "rimraf": "^6.0.1",
     "simplex-noise": "^4.0.3",
     "vite": "^5.4.5",
-    "vite-plugin-markdown": "^2.2.0"
+    "vite-plugin-markdown": "^2.2.0",
+    "@pixi-trauma/v7": "*"
   },
   "devDependencies": {
     "typescript": "^4.9.5"

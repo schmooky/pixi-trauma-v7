@@ -12,7 +12,7 @@ export interface ShakeSettings {
 export const DEFAULT_SHAKE_SETTINGS: ShakeSettings = {
   amplitude: 100,
   traumaPower: 2,
-  decayPerSecond: 0,
+  decayPerSecond: 0.4,
   frequency: 15,
   octaves: 1,
 };

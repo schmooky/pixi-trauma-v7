@@ -1,5 +1,5 @@
 import { Application, Graphics } from "pixi.js";
-import { TraumaShakeContainer, ShakeSettings } from "./TraumaShakeContainer";
+import { TraumaShakeContainer, ShakeSettings } from "@pixi-trauma/v7";
 import * as dat from "dat.gui";
 
 // Create PixiJS application
@@ -28,6 +28,23 @@ for (let y = 4; y <= app.screen.height; y += gridSize) {
 
 app.stage.addChild(grid);
 
+
+// Parameters for the ellipse
+const a = 200; // Semi-major axis
+const b = 100; // Semi-minor axis
+const centerX = app.renderer.width / 2; // Center of the ellipse
+const centerY = app.renderer.height / 2; // Center of the ellipse
+
+grid.lineStyle(1, 0xff0000, 1); // Red line for the trajectory
+
+// Draw an ellipse using parametric equations
+grid.moveTo(centerX + a * Math.cos(0), centerY + b * Math.sin(0));
+for (let angle = 0; angle <= Math.PI * 2; angle += 0.01) {
+    const x = centerX + a * Math.cos(angle);
+    const y = centerY + b * Math.sin(angle);
+    grid.lineTo(x, y);
+}
+
 // Create shake container and test square
 const shakeContainer = new TraumaShakeContainer();
 const square = new Graphics();
@@ -40,6 +57,23 @@ square.endFill();
 shakeContainer.addChild(square);
 shakeContainer.position.set(app.screen.width / 2, app.screen.height / 2);
 app.stage.addChild(shakeContainer);
+
+// Animation variables
+let angle = 0; // Start angle
+
+// Animate the container along the elliptical trajectory
+app.ticker.add(() => {
+    angle += 0.01; // Increment angle
+
+    // Calculate new position based on the elliptical trajectory
+    const x = centerX + a * Math.cos(angle);
+    const y = centerY + b * Math.sin(angle);
+    
+    // Update container position
+    shakeContainer.x = x;
+    shakeContainer.y = y;
+});
+
 
 // GUI Controls setup
 interface GuiControls extends ShakeSettings {
