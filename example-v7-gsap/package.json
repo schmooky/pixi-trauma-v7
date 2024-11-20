@@ -9,16 +9,17 @@
   },
   "dependencies": {
     "@pixi-spine/all-4.1": "^4.0.4",
+    "@pixi-trauma/v7": "*",
     "@types/dat.gui": "^0.7.13",
     "@types/node": "^22.7.0",
     "dat.gui": "^0.7.9",
     "gsap": "^3.12.5",
+    "pixi-filters": "^5.3.0",
     "pixi-spine": "^4.0.3",
     "pixi.js": "^7.4.2",
     "simplex-noise": "^4.0.3",
     "vite": "^5.4.5",
-    "vite-plugin-markdown": "^2.2.0",
-    "@pixi-trauma/v7": "*"
+    "vite-plugin-markdown": "^2.2.0"
   },
   "devDependencies": {
     "typescript": "^4.9.5"
