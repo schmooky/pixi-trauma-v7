@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Summary</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #111;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .header h2 {
+            margin: 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        .summary {
+            margin-top: 20px;
+            border-top: 2px solid #111;
+            padding-top: 10px;
+        }
+        .export-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .export-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2>Game: Legacy of Phoenix</h2>
+        <div class="status">Status: <strong>Success</strong></div>
+    </div>
+
+    <table>
+        <tr>
+            <th>Game ID</th>
+            <td>Legacy-of-Phoenix</td>
+        </tr>
+        <tr>
+            <th>Player ID</th>
+            <td>391950915_GBP</td>
+        </tr>
+        <tr>
+            <th>Currency</th>
+            <td>GBP</td>
+        </tr>
+        <tr>
+            <th>Start Balance</th>
+            <td>1258.00</td>
+        </tr>
+        <tr>
+            <th>End Balance</th>
+            <td>1128.00</td>
+        </tr>
+        <tr>
+            <th>Bet</th>
+            <td>0.10</td>
+        </tr>
+        <tr>
+            <th>Total Win</th>
+            <td>20.00</td>
+        </tr>
+        <tr>
+            <th>Total Bet</th>
+            <td>150.00</td>
+        </tr>
+        <tr>
+            <th>Start Date</th>
+            <td>Sep 24, 2024, 14:55:48</td>
+        </tr>
+        <tr>
+            <th>End Date</th>
+            <td>Sep 24, 2024, 14:55:51</td>
+        </tr>
+    </table>
+
+    <div class="summary">
+        <h3>Replay Summary</h3>
+        <table>
+            <tr>
+                <th>Replay</th>
+                <th>Event Type</th>
+                <th>Win by Event</th>
+                <th>Mechanic</th>
+            </tr>
+            <tr>
+                <td><button>Show Replay</button></td>
+                <td>Regular Spin</td>
+                <td>10</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><button>Show Replay</button></td>
+                <td>Free Spin</td>
+                <td>20</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><button>Show Replay</button></td>
+                <td>Re-Spin</td>
+                <td>5</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><button style="background-color: orange; color: white;">Show Replay</button></td>
+                <td>Hold and win</td>
+                <td>15</td>
+                <td></td>
+            </tr>
+        </table>
+        <h4>Total Win by Round: 55</h4>
+        <button class="export-button">Export Round as PDF</button>
+    </div>
+</div>
+
+</body>
+</html>

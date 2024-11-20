@@ -1,0 +1,61 @@
+---
+const { id, initialCode } = Astro.props;
+---
+
+<button id="reload">🔄</button>
+<div id="loader">Loading...</div>
+<div class="pixi-editor-wrapper">
+  <div class="pixi-editor-text-container">
+    <pre><code id="editor" class="javascript" contenteditable="true">{initialCode}</code></pre>
+  </div>
+  <canvas id={id} class="pixi-canvas" data-pixi-canvas></canvas>
+</div>
+
+<script type="module" is:inline>
+  // Highlight the code in the editor
+  hljs.highlightBlock(document.getElementById("editor"));
+
+  const app = new PIXI.Application({
+    view: document.querySelectorAll('[data-pixi-canvas]')[0],
+    width: document.querySelectorAll('[data-pixi-canvas]')[0].clientWidth, // Set canvas width to a visible size
+    height: document.querySelectorAll('[data-pixi-canvas]')[0].clientHeight, // Set canvas height to a visible size
+    backgroundColor: 0x282b30,
+    resolution: window.devicePixelRatio || 1,
+  });
+
+  const editor = document.getElementById("editor");
+  const loader = document.getElementById("loader");
+
+  // Function to run the code from the editor
+  function runCode() {
+    loader.style.display = "block"; // Show preloader
+    try {
+      // Clear the canvas before re-running code
+      app.stage.removeChildren();
+      eval(editor.innerText); // Execute the Pixi.js code
+    } catch (e) {
+      console.error(e);
+      alert("Error in your code: " + e.message);
+    } finally {
+      loader.style.display = "none"; // Hide preloader
+    }
+  }
+
+  // Event listener for the reload button
+  document.getElementById("reload").addEventListener("click", runCode);
+
+  // Run the initial code
+  runCode();
+
+  // Live code check
+  setInterval(() => {
+    if (editor.innerText) {
+      runCode(); // Check and run the code every second
+    }
+  }, 1000);
+
+  // Listen for editor input to trigger highlighting
+  editor.addEventListener("input", () => {
+    hljs.highlightBlock(editor);
+  });
+</script>

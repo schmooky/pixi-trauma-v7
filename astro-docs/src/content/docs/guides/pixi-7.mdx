@@ -126,3 +126,14 @@ window.addEventListener('keydown', (event) => {
   }
 });
 ```
+
+import PixiEditor from '../../../components/PIXICanvas.astro';
+
+
+<PixiEditor id="pixi-trauma-simple" initialCode={`
+const graphics = new PIXI.Graphics();
+graphics.beginFill(0xff0000);
+graphics.drawCircle(160, 160, 16);
+graphics.endFill();
+app.stage.addChild(graphics);
+`} />

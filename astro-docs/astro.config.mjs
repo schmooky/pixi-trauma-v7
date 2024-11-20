@@ -7,9 +7,9 @@ export default defineConfig({
   site: 'https://docs.trauma.ddstnd.space',
   base: '/',
   integrations: [starlight({
-    title: 'Ion Theme',
+    title: 'PIXI Trauma',
     logo: {
-      src: './src/assets/ion-logo.svg'
+      src: './src/assets/pixijs-logo.svg'
     },
     social: {
       github: 'https://github.com/schmooky'
@@ -45,7 +45,9 @@ export default defineConfig({
       '@fontsource-variable/space-grotesk/index.css',
       '@fontsource/space-mono/400.css',
       '@fontsource/space-mono/700.css',
-      './src/styles/theme.css'
+      './src/styles/highlight.css',
+      './src/styles/editor.css',
+      './src/styles/theme.css',
     ],
     expressiveCode: {
       themes: ['github-dark']

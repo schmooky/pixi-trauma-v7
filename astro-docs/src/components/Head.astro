@@ -40,6 +40,20 @@ const headDefaults: z.input<ReturnType<typeof HeadConfigSchema>> = [
 			type: config.favicon.type,
 		},
 	},
+	{
+		tag: 'script',
+		attrs: {
+			src: 'https://pixijs.download/v7.4.2/pixi.min.js'
+		}
+		
+	},
+	{
+		tag: 'script',
+		attrs: {
+			src: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js'
+		}
+		
+	},
 	// OpenGraph Tags
 	{ tag: 'meta', attrs: { property: 'og:title', content: titleWithoutIcons } },
 	{ tag: 'meta', attrs: { property: 'og:type', content: 'article' } },
