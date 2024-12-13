@@ -12,7 +12,7 @@ export interface ShakeSettings {
 export const DEFAULT_SHAKE_SETTINGS: ShakeSettings = {
   amplitude: 100,
   traumaPower: 2,
-  decayPerSecond: 0.4,
+  decayPerSecond: 0.94,
   frequency: 15,
   octaves: 1,
 };
@@ -34,11 +34,12 @@ export class TraumaShakeContainer extends Container {
     this.trauma = Math.min(Math.max(this.trauma + amount, 0), 1);
   }
 
-  public update(deltaTime: number): void {
+  public update(deltaTimeMS: number): void {
+    const deltaTime = deltaTimeMS / 60
+
     this.elapsedTime += deltaTime;
 
     // Decay trauma over time
-    const prevTrauma = this.trauma;
     this.trauma = Math.max(
       this.trauma - this.settings.decayPerSecond * deltaTime,
       0
